@@ -1,0 +1,19 @@
+{
+  "name": "simple-webpack",
+  "version": "1.0.0",
+  "description": "Vue JS & webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Jen Cant",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.4.1"
+  },
+  "dependencies": {
+    "vue": "^2.4.2"
+  }
+}
