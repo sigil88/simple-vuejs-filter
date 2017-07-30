@@ -4,6 +4,10 @@ import config from '../config/config.js';
 
 var apikey = config.apikey;
 
+// stylesheets
+require('./css/app.scss');
+
+// Vue (TO DO: convert to using templates/components)
 Vue.config.devtools = true;
 Vue.use(VueResource);
 
