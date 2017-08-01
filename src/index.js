@@ -4,32 +4,63 @@ import config from '../config/config.js';
 
 var apikey = config.apikey;
 
-// stylesheets
-// require('./css/app.scss');
-
-// Vue (TO DO: convert to using templates/components)
+// Vue 
+// TO DO: 
+//  	- convert to using templates/components
+//		- change from vue-resource to axios
 Vue.config.devtools = true;
 Vue.use(VueResource);
 
 new Vue({
-	el: '#app',
+	el: '#feed',
 	data: {
-		newsFeed: ""
+		newsFeed: "",
 	},
-	computed: {
-		source: function() {
-			var source = this.newsFeed.source;
-			return source;
-		}
+	created: function() {
+	    console.log('running');
+	    this.getData()
+	    .then(() => {
+	    	this.filterAuthors();
+	    	
+	    });
+	},
+	computed: 
+	{
+		articles: function() {
+			var articles = this.newsFeed.articles;
+			return articles;
+		},
+
+		// authorsList: function() {
+		// 	return authorsArray;
+		// }
 	}, 
 	methods: 
 	{
 		getData: function() {
-			var newsFeed = this.$http.get('https://newsapi.org/v1/articles?source=the-next-web&sortby=latest&apikey='+ apikey).then(response => {
+			return this.$http.get('https://newsapi.org/v1/articles?source=the-next-web&sortby=latest&apikey='+ apikey).then(response => {
 				this.newsFeed = response.body;
-			}, response => {
+			}, err => {
 				console.error(error);
 			});
 		},
+
+		filterAuthors: function() {
+
+			var articles = this.articles; //computed
+			var authorsArray = [];
+
+			console.log(articles);
+
+			// articles.forEach(function(article) {
+			// 	// var authors = article.author;
+			// 	// authorsArray.push(authors);
+			// 	console.log(authors);
+			// });
+
+			// return authorsArray;
+
+
+		}
 	}
 });
