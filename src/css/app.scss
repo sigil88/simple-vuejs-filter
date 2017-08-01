@@ -1,6 +1,57 @@
-@import "~bulma";
+/*----------  imported styles  ----------*/
+@import "~bulma"; // bulma css framework
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat:300,400,400i,800');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-h1 {
-	font-family: 'Abril Fatface';
+/*----------  variables  ----------*/
+@import './variables.scss';
+
+/*----------  end setup  ----------*/
+
+body {
+	font-family: $font-normal;
+}
+
+.button {
+	border-radius:0;
+	&:hover,
+	&:focus {
+		transition: all 0.25s ease;
+	}
+}
+
+h1.title {
+	font-family: $font-heading;
+	font-weight: $font-heading-weight;
+}
+
+.newsfeed {
+	&__section {
+		background: #eee
+	}
+}
+
+.card {
+	.subtitle {
+		text-transform: uppercase;
+		font-weight: 800;
+		font-size: 0.95rem;
+		letter-spacing: 0.15rem;
+		margin-bottom: 1.75rem;
+	}
+	.title {
+		font-weight: 300;
+		line-height: 1.35;
+	}
+	&-img-featured {
+		background-size: cover;
+		background-position: center;
+		height: 150px;
+		height: 8em;
+	}
+	.button {
+	    font-weight: 800;
+    	letter-spacing: 0.05rem;
+    	font-size: 0.85rem; 
+	}
 }
