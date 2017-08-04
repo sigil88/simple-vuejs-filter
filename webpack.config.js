@@ -1,5 +1,9 @@
-var path 	= require('path');
-var webpack = require('webpack');
+var path 			= require('path');
+var webpack 		= require('webpack');
+
+// TODO 
+// 		- add autoprefixer for css
+//		- add browsersync
 
 // output css into separate file
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -8,6 +12,7 @@ const extractSass = new ExtractTextPlugin({
     disable: process.env.NODE_ENV === "development"
 });
 
+// config
 module.exports = {
 	entry: ['./src/index.js', './src/css/app.scss'],
 	output: {
@@ -26,7 +31,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("css/styles.css"),
+		new ExtractTextPlugin("styles.css"),
 	],
 	resolve: {
 		alias: {

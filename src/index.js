@@ -15,13 +15,14 @@ new Vue({
 	el: '#feed',
 	data: {
 		newsFeed: "",
+		selected: ""
 	},
 	created: function() {
 	    console.log('running');
 	    this.getData()
 	    .then(() => {
 	    	this.filterAuthors();
-	    	
+
 	    });
 	},
 	computed: 
@@ -31,9 +32,11 @@ new Vue({
 			return articles;
 		},
 
-		// authorsList: function() {
-		// 	return authorsArray;
-		// }
+		authorsList: function() {
+			var authorsComputed = this.filterAuthors();
+			console.log(authorsComputed);
+			return this.filterAuthors();
+		}
 	}, 
 	methods: 
 	{
@@ -46,19 +49,24 @@ new Vue({
 		},
 
 		filterAuthors: function() {
-
-			var articles = this.articles; //computed
+			var articles = this.articles; 
 			var authorsArray = [];
 
-			console.log(articles);
+			articles.forEach(function(article) {
+				var authors = article.author;
+				authorsArray.push(authors);
+			});
 
-			// articles.forEach(function(article) {
-			// 	// var authors = article.author;
-			// 	// authorsArray.push(authors);
-			// 	console.log(authors);
-			// });
+			//remove duplicates
 
-			// return authorsArray;
+			var authorsArray = authorsArray.filter(function(elem, pos, arr) {
+
+				return arr.indexOf(elem) == pos;
+
+			});
+
+			return authorsArray;
+
 
 
 		}
